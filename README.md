@@ -13,7 +13,7 @@ Jenkins Project名称: **tio-importer-alpine**
 
 ***请注意修改相应的local registry、repo及image。***
 
-本测试默认从[我的Github]读取构建代码。所以如需测试镜像漏洞修复的，请自行准备github账号，或使用本地[Dockerfile](https://github.com/shawntns/docker-myjenkins/blob/master/Dockerfile)的方式替代。
+本测试默认从我的[Github]读取构建代码。所以如需测试镜像漏洞修复的，请使用本地[Dockerfile](Dockerfile)的方式替代。
 
 ## 镜像导入、运行方法
 两个主要文件：受到github上传大小限制，需从第三方云盘下载。
@@ -50,7 +50,7 @@ docker exec -it -u root myjenkins_loaded bash -c "chmod 666 /var/run/docker.sock
 
 
 [Alpine Linux]: https://alpinelinux.org
-[我的Github]:Dokcerfile/alpine/Dockerfile
+[Github]:Dockerfile
 [myjenkins-181228.tar]: https://mega.nz/#!gdtwgKzb!Q6BJfTKBPfsaAISrXK-Kru5z84uB1Hrvv3056p0svVA
 [baidupan备用链接]: https://pan.baidu.com/s/1JfEBBQkIfl16jEN4Z6uWtA
 [myjenkins_volume.tar.gz]: https://mega.nz/#!gEkgBKAB!d-bXDJwcaejXyWTK2CWGkcqj0Uhi6aok-8aCnY73esI
