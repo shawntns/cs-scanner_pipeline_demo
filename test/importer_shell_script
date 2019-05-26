@@ -1,0 +1,36 @@
+echo "Preparing image manifest sending to T.io cloud, please hold on..."
+sleep 60
+set +x
+response=$(curl "https://cloud.tenable.com/container-security/api/v1/compliancebyname?image=alpine&repo=importer-at-dev&tag=$BUILD_NUMBER" -H "X-ApiKeys: accessKey=$TIO_ACCESS_KEY; secretKey=$TIO_SECRET_KEY" | cut -d '"' -f4)
+if [ "$response" = "pass" ]; then
+  echo "Image compliant status $response, container image met security policy requirement."
+  exit 0
+elif [ "$response" = "fail" ]; then
+  #statements [ "$response" = "fail" ]; then
+  echo "Image compliant status $response, container image contain vulnerabilities and does not meet security policy requirement."
+  exit 1
+else
+  echo "Preparing image manifest sending to T.io cloud, please hold on..."
+  sleep 120
+  response=$(curl "https://cloud.tenable.com/container-security/api/v1/compliancebyname?image=alpine&repo=importer-at-dev&tag=$BUILD_NUMBER" -H "X-ApiKeys: accessKey=$TIO_ACCESS_KEY; secretKey=$TIO_SECRET_KEY" | cut -d '"' -f4)
+  if [ "$response" = "pass" ]; then
+    echo "Image compliant status $response, container image met security policy requirement."
+    exit 0
+  elif [ "$response" = "fail" ]; then
+    #statements [ "$response" = "fail" ]; then
+    echo "Image compliant status $response, container image contain vulnerabilities and does not meet security policy requirement."
+    exit 1
+  else
+    echo "Preparing image manifest sending to T.io cloud, please hold on..."
+    sleep 300
+    response=$(curl "https://cloud.tenable.com/container-security/api/v1/compliancebyname?image=alpine&repo=importer-at-dev&tag=$BUILD_NUMBER" -H "X-ApiKeys: accessKey=$TIO_ACCESS_KEY; secretKey=$TIO_SECRET_KEY" | cut -d '"' -f4)
+    if [ "$response" = "error" ]; then
+      echo "Image compliant status $error, container image testing in progress, please try again later."
+      exit 2
+    elif [ "$response" != "pass" ]; then
+      echo "Image compliant status $response, container image contain vulnerabilities and does not meet security policy requirement."
+      exit 1
+    fi
+    echo "Image compliant status $response, container image met security policy requirement."
+  fi
+fi
