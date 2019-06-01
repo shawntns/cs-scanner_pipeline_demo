@@ -13,7 +13,7 @@ Jenkins Project名称: **tio-importer-alpine**
 
 ***请注意修改相应的local registry、repo及image。***
 
-本测试默认从我的[Github]读取构建代码。所以如需测试镜像漏洞修复的，请使用本地[Dockerfile](Dockerfile)的方式替代。
+本测试默认从我的[Github]读取构建代码。如需测试镜像漏洞修复的，请自行准备本地[Dockerfile](Dockerfile)的方式替代。
 
 ## 镜像导入、运行方法
 两个主要文件：受到github上传大小限制，需从第三方云盘下载。
