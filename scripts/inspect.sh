@@ -1,5 +1,5 @@
 #!/bin/bash
-#author: xxu@tenable.com
+#author: shawntns
 #usage: sh inspect.sh
 
 ##运行示例及说明
