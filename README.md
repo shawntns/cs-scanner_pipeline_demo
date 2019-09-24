@@ -53,5 +53,5 @@ docker exec -it -u root myjenkins_loaded bash -c "chmod 666 /var/run/docker.sock
 [Github]:Dockerfile
 [myjenkins-181228.tar]: https://mega.nz/#!gdtwgKzb!Q6BJfTKBPfsaAISrXK-Kru5z84uB1Hrvv3056p0svVA
 [baidupan备用链接]: https://pan.baidu.com/s/1JfEBBQkIfl16jEN4Z6uWtA
-[myjenkins_volume.tar.gz]: https://mega.nz/#!gEkgBKAB!d-bXDJwcaejXyWTK2CWGkcqj0Uhi6aok-8aCnY73esI
+[myjenkins_volume.tar.gz]: https://mega.nz/#!tYVR2SIb!N_o9Wqak2FBtXYBifM5KIvKx9mzORkPdOoAcFqxBKWM
 [tenable.io cloud]: https://cloud.tenable.com
