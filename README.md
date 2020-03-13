@@ -1,6 +1,7 @@
 # docker myjenkins
 
 ## 测试用例说明
+
 Jenkins Project名称: **tio-importer-alpine**
 
 构建[Alpine Linux]镜像(5MB)，上传到本地registry，经importer处理后发送manifest至[tenable.io cloud]。
@@ -16,6 +17,7 @@ Jenkins Project名称: **tio-importer-alpine**
 本测试默认从我的[Github]读取构建代码。如需测试镜像漏洞修复的，请自行准备本地[Dockerfile](Dockerfile)的方式替代。
 
 ## 镜像导入、运行方法
+
 两个主要文件：受到github上传大小限制，需从第三方云盘下载。
 
 * **[myjenkins-181228.tar]**
@@ -26,26 +28,35 @@ Jenkins Project名称: **tio-importer-alpine**
 
 * [baidupan备用链接] (提取码: 822g)
 
-#### step 1. 导入镜像
+### step 1. 导入镜像
+
 ```
 docker load < myjenkins-181228.tar
 ```
-#### step 2. 将[myjenkins_volume.tar.gz]解压到本机
+
+### step 2. 将[myjenkins_volume.tar.gz]解压到本机
+
 ```
 tar xvf myjenkins_volume.tar.gz
 chown -R 1000:1000 myjenkins_volume
 ```
-#### step 3. 启动容器
+
+### step 3. 启动容器
+
 ```
 cd myjenkins_volume && docker run -d -p 8082:8080 --name myjenkins_loaded -v /var/run/docker.sock:/var/run/docker.sock -v $(pwd):/var/jenkins_home myjenkins:181228
 ```
-#### step 4. 为容器docker.sock赋权
+
+### step 4. 为容器docker.sock赋权
 
 ```
 docker exec -it -u root myjenkins_loaded bash -c "chmod 666 /var/run/docker.sock"
 ```
+
 ***
+
 ##### Jenkins WEBUI管理用户/密码
+
 `admin / 973324a46c7b4f058932ce956a4f5500`
 
 
