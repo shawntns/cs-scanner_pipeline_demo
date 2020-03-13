@@ -30,26 +30,26 @@ Jenkins Project名称: **tio-importer-alpine**
 
 ### step 1. 导入镜像
 
-```
+```bash
 docker load < myjenkins-181228.tar
 ```
 
 ### step 2. 将[myjenkins_volume.tar.gz]解压到本机
 
-```
+```bash
 tar xvf myjenkins_volume.tar.gz
 chown -R 1000:1000 myjenkins_volume
 ```
 
 ### step 3. 启动容器
 
-```
+```bash
 cd myjenkins_volume && docker run -d -p 8082:8080 --name myjenkins_loaded -v /var/run/docker.sock:/var/run/docker.sock -v $(pwd):/var/jenkins_home myjenkins:181228
 ```
 
 ### step 4. 为容器docker.sock赋权
 
-```
+```bash
 docker exec -it -u root myjenkins_loaded bash -c "chmod 666 /var/run/docker.sock"
 ```
 
@@ -58,7 +58,6 @@ docker exec -it -u root myjenkins_loaded bash -c "chmod 666 /var/run/docker.sock
 ##### Jenkins WEBUI管理用户/密码
 
 `admin / 973324a46c7b4f058932ce956a4f5500`
-
 
 [Alpine Linux]: https://alpinelinux.org
 [Github]:Dockerfile
